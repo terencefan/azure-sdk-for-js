@@ -23,7 +23,7 @@ import {
 } from "../../src";
 import { TokenCredential } from "@azure/core-http";
 import { assertClientUsesTokenCredential } from "../utils/assert";
-import { record, delay, Recorder, isPlaybackMode } from "@azure-tools/test-recorder";
+import { record, delay, Recorder } from "@azure-tools/test-recorder";
 import { Test_CPK_INFO } from "../utils/fakeTestSecrets";
 import { Context } from "mocha";
 
@@ -171,10 +171,6 @@ describe("PageBlobClient Node.js only", () => {
   });
 
   it("uploadPagesFromURL - source SAS and destination bearer token", async function(this: Context) {
-    if (!isPlaybackMode()) {
-      // Enable this when STG78 - version 2020-10-02 is enabled on production.
-      this.skip();
-    }
     await pageBlobClient.create(1024);
 
     const result = await blobClient.download(0);
@@ -217,10 +213,6 @@ describe("PageBlobClient Node.js only", () => {
   });
 
   it("uploadPagesFromURL - source bear token and destination account key", async function(this: Context) {
-    if (!isPlaybackMode()) {
-      // Enable this when STG78 - version 2020-10-02 is enabled on production.
-      this.skip();
-    }
     await pageBlobClient.create(1024);
 
     const result = await blobClient.download(0);
@@ -257,10 +249,6 @@ describe("PageBlobClient Node.js only", () => {
   });
 
   it("uploadPagesFromURL - destination bearer token", async function(this: Context) {
-    if (!isPlaybackMode()) {
-      // Enable this when STG78 - version 2020-10-02 is enabled on production.
-      this.skip();
-    }
     await pageBlobClient.create(1024);
 
     const result = await blobClient.download(0);

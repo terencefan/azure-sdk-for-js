@@ -23,7 +23,7 @@ import {
 } from "../utils";
 import { TokenCredential } from "@azure/core-http";
 import { assertClientUsesTokenCredential } from "../utils/assert";
-import { isPlaybackMode, record, Recorder } from "@azure-tools/test-recorder";
+import { record, Recorder } from "@azure-tools/test-recorder";
 import { Test_CPK_INFO } from "../utils/fakeTestSecrets";
 import { Context } from "mocha";
 dotenv.config();
@@ -155,10 +155,6 @@ describe("AppendBlobClient Node.js only", () => {
   });
 
   it("appendBlockFromURL - source SAS and destination bearer token", async function(this: Context) {
-    if (!isPlaybackMode()) {
-      // Enable this when STG78 - version 2020-10-02 is enabled on production.
-      this.skip();
-    }
     await appendBlobClient.create();
 
     const content = "Hello World!";
@@ -199,10 +195,6 @@ describe("AppendBlobClient Node.js only", () => {
   });
 
   it("appendBlockFromURL - source bear token and destination account key", async function(this: Context) {
-    if (!isPlaybackMode()) {
-      // Enable this when STG78 - version 2020-10-02 is enabled on production.
-      this.skip();
-    }
     await appendBlobClient.create();
 
     const content = "Hello World!";
@@ -228,10 +220,6 @@ describe("AppendBlobClient Node.js only", () => {
   });
 
   it("appendBlockFromURL - destination bearer token", async function(this: Context) {
-    if (!isPlaybackMode()) {
-      // Enable this when STG78 - version 2020-10-02 is enabled on production.
-      this.skip();
-    }
     await appendBlobClient.create();
 
     const content = "Hello World!";

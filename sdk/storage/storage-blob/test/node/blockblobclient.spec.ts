@@ -26,7 +26,7 @@ import {
 } from "../../src";
 import { TokenCredential } from "@azure/core-http";
 import { assertClientUsesTokenCredential } from "../utils/assert";
-import { isPlaybackMode, record, Recorder } from "@azure-tools/test-recorder";
+import { record, Recorder } from "@azure-tools/test-recorder";
 import { streamToBuffer3 } from "../../src/utils/utils.node";
 import * as crypto from "crypto";
 import { BLOCK_BLOB_MAX_UPLOAD_BLOB_BYTES } from "../../src/utils/constants";
@@ -245,10 +245,6 @@ describe("syncUploadFromURL", () => {
   });
 
   it("stageBlockFromURL - source SAS and destination bearer token", async function(this: Context) {
-    if (!isPlaybackMode()) {
-      // Enable this when STG78 - version 2020-10-02 is enabled on production.
-      this.skip();
-    }
     const stokenBlobServiceClient = getTokenBSU();
     const tokenNewBlockBlobClient = stokenBlobServiceClient
       .getContainerClient(containerClient.containerName)
@@ -277,10 +273,6 @@ describe("syncUploadFromURL", () => {
   });
 
   it("stageBlockFromURL - source bear token and destination account key", async function(this: Context) {
-    if (!isPlaybackMode()) {
-      // Enable this when STG78 - version 2020-10-02 is enabled on production.
-      this.skip();
-    }
     const body = "HelloWorld";
     await blockBlobClient.upload(body, body.length);
 
@@ -327,10 +319,6 @@ describe("syncUploadFromURL", () => {
   });
 
   it("stageBlockFromURL - destination bearer token", async function(this: Context) {
-    if (!isPlaybackMode()) {
-      // Enable this when STG78 - version 2020-10-02 is enabled on production.
-      this.skip();
-    }
     const body = "HelloWorld";
     await blockBlobClient.upload(body, body.length);
 
@@ -380,10 +368,6 @@ describe("syncUploadFromURL", () => {
   });
 
   it("syncUploadFromURL - source SAS and destination bearer token", async function(this: Context) {
-    if (!isPlaybackMode()) {
-      // Enable this when STG78 - version 2020-10-02 is enabled on production.
-      this.skip();
-    }
     const stokenBlobServiceClient = getTokenBSU();
     const tokenNewBlockBlobClient = stokenBlobServiceClient
       .getContainerClient(containerClient.containerName)
@@ -398,10 +382,6 @@ describe("syncUploadFromURL", () => {
   });
 
   it("syncUploadFromURL - source bear token and destination account key", async function(this: Context) {
-    if (!isPlaybackMode()) {
-      // Enable this when STG78 - version 2020-10-02 is enabled on production.
-      this.skip();
-    }
     const body = "HelloWorld";
     await blockBlobClient.upload(body, body.length);
 
@@ -426,10 +406,6 @@ describe("syncUploadFromURL", () => {
   });
 
   it("syncUploadFromURL - destination bearer token", async function(this: Context) {
-    if (!isPlaybackMode()) {
-      // Enable this when STG78 - version 2020-10-02 is enabled on production.
-      this.skip();
-    }
     const body = "HelloWorld";
     await blockBlobClient.upload(body, body.length);
 
